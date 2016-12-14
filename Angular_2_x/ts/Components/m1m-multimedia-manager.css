@@ -1,0 +1,26 @@
+.header {
+	background-color: #3d5c5c;
+	color: #f2f2f2;
+	padding: 20px;
+	margin-bottom: 8px;
+	display: flex;
+	justify-content: space-between;
+}
+.header h2 {
+	margin: 0;
+}
+.media_renderers_container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding: 0;
+}
+.drop {
+	width: 30px;
+	color: #f2f2f2;
+}
+.drop_control {
+	cursor: pointer;
+	--iron-icon-fill-color: #f2f2f2;
+	--iron-icon-stroke-color: #f2f2f2;
+}

@@ -1,0 +1,48 @@
+<section>
+    <header>
+        <!-- <span (click)="browseMediaServer(null)">Servers</span>
+        <span *ngIf="ms" (click)="browseMediaServer(ms)"> {{ms.name}}</span> -->
+        <ul class="breadcrumb">
+          <li (click)="browseMediaServer(null)">Serveurs</li>
+          <li *ngIf="ms" (click)="browseMediaServer(ms)"> {{ms.name}}</li>
+          <li class="dir_breadcrumb" *ngFor="let dir of breadcrumb"
+           (click)="browse(dir)">
+           {{dir.name}}</li>
+        </ul>
+        <span class="back_servers" *ngIf="!showArrow()" (click)="browseMediaServer(null)">Serveurs</span>
+        <ul class="back">
+          <li>
+            <button *ngIf="!getCurrentDir() && ms && showArrow()" (click)="browseMediaServer(ms)">&lsaquo;</button>
+            <button *ngIf="getCurrentDir()" (click)="getParentDir()?browse(getParentDir()):ms?browseMediaServer(ms):browseMediaServer(null)">&lsaquo;</button></li>
+          <li class="folder_name" *ngIf="getCurrentDir()">{{getCurrentDir().name}}</li>
+        </ul>
+    </header>
+    <section>
+        <section *ngIf="!ms">
+          <div class="ens_servers"> 
+            <div *ngFor="let server of devices" (click)="browseMediaServer(server)" class="server">
+              <img src="{{server.iconURL || 'img/dir.png'}}" alt="icon"> 
+              <p> {{server.name }}</p>
+            </div>
+          </div>
+        </section>
+        <section *ngIf="ms && data" style="border:1px solid #DDD">
+          <div class="arborescence">
+            <div class="arbo_div" *ngFor="let dir of data.directories"
+               (click)="browse(dir)">
+              <img src="{{dir.iconURL || 'img/dir.png'}}">
+              <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+              <span class="dir_name">{{dir.name}}</span>
+            </div>
+            <div class="media">
+              <div style="cursor:move" *ngFor="let media of data.medias"
+                   [alx-draggable]="media">
+                <img src="{{getIcon(media) || media.icon}}" />
+                <p class="title">{{ media.title }}</p>
+                <p class="creator" *ngIf="media.creator && media.creator != 'Unknown' ">{{media.creator}}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+    </section>
+</section>

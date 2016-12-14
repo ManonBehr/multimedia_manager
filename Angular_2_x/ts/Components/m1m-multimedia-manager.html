@@ -1,0 +1,28 @@
+<!-- <h1>{{title}}</h1> -->
+<div id="medias" class="header">
+	<h2>Manager de Medias</h2>
+	<a class="drop" href="#players">
+		<iron-icon 
+            class   = "drop_control"
+            icon    = "icons:arrow-downward"
+      ></iron-icon>
+   </a>
+</div>
+<m1m-media-browser [devices]="mediaServers"></m1m-media-browser>
+<hr>
+<div id="players" class="header">
+	<h2>Lecteurs de Medias</h2>
+	<a class="drop" href="#medias">
+		<iron-icon 
+            class   = "drop_control"
+            icon    = "icons:arrow-upward"
+      ></iron-icon>
+	</a>
+</div>
+<section class="media_renderers_container m1m-media-renderer-container">
+    <m1m-media-renderer
+            *ngFor="let renderer of mediaRenderers"
+            [nf]="renderer"
+    >
+    </m1m-media-renderer>
+</section>

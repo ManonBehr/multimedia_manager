@@ -1,0 +1,62 @@
+<div class="media_renderer_container">
+    <p class="media_renderer_name">{{nf.name}}</p>
+    <ul class="media_renderer m1m-media-renderer-controls" alx-dropzone
+             [alx-accept-fct] = "isMedia"
+             (alx-ondrop)     = "loadMedia($event)"
+    >
+        <li class="media_title">
+            <span *ngIf="currentMedia">{{currentMedia.title}}</span>
+        </li>
+
+        <li class="player">
+            <img *ngIf="currentMedia" src="{{getIcon(currentMedia) || currentMedia.icon || 'img/default_img.png'}}"/>
+            <img *ngIf="!currentMedia" src="img/default.png"/>
+            <div class="player_control">
+                <a *ngIf="!isPlaying()" (click)="play ()">
+                    <iron-icon 
+                        icon    = "av:play-arrow"
+                        class   = "control_button"
+                    ></iron-icon>
+                </a>
+                <a *ngIf=" isPlaying()" (click)="pause()">
+                    <iron-icon 
+                        icon    = "av:pause"
+                        class   = "control_button"
+                    ></iron-icon>
+                </a>
+                <a *ngIf="!isStopped()" (click)="stop ()">
+                    <iron-icon 
+                        icon    = "av:stop"
+                        class   = "control_button"
+                    ></iron-icon>
+                </a>
+            </div>
+        </li>
+        <li class="media_creator">
+            <span *ngIf="currentMedia">{{currentMedia.creator}}</span>
+        </li>
+    </ul>
+    <div class="volume">
+        <iron-icon 
+            icon    = "av:volume-mute"
+            class   = "sound"
+        ></iron-icon>
+        <paper-slider
+                class = "slider"
+                min   = "0"
+                max   = "100"
+                [ngModel]       = "volume"
+                (ngModelChange) = "setVolume($event)"
+        ></paper-slider>
+        <iron-icon 
+            icon    = "av:volume-up"
+            class   = "sound"
+        ></iron-icon>
+    </div>
+</div>
+        
+        <!-- <section *ngIf="currentMedia">
+            Duration: {{currentMedia.duration}}<br />
+            currentMedia object:<br />
+            <code>{{currentMedia | json}}</code>
+        </section> -->
