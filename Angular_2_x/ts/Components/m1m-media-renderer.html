@@ -37,10 +37,12 @@
         </li>
     </ul>
     <div class="volume">
-        <iron-icon 
-            icon    = "av:volume-mute"
-            class   = "sound"
-        ></iron-icon>
+        <a (click)="setVolume(0)">
+            <iron-icon 
+                icon    = "av:volume-mute"
+                class   = "sound"
+            ></iron-icon>
+        </a>
         <paper-slider
                 class = "slider"
                 min   = "0"
@@ -48,10 +50,12 @@
                 [ngModel]       = "volume"
                 (ngModelChange) = "setVolume($event)"
         ></paper-slider>
-        <iron-icon 
-            icon    = "av:volume-up"
-            class   = "sound"
-        ></iron-icon>
+        <a (click)="setVolume(100)">
+            <iron-icon 
+                icon    = "av:volume-up"
+                class   = "sound"
+            ></iron-icon>
+        </a>
     </div>
 </div>
         

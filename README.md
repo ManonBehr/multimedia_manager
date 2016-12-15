@@ -1,2 +1,2 @@
 # multimedia_manager
-User interface for multimedia manager containing servers and players. 
+This is a user interface for a multimedia manager containing servers (like kodi, plex...) and players. 

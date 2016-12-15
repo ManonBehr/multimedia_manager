@@ -68,6 +68,7 @@
 	/*flex-direction: row;*/
 }
 .sound {
+	cursor: pointer;
 	--iron-icon-width: 26px;
 	--iron-icon-height: 26px;
 	--iron-icon-fill-color: #3d5c5c;
